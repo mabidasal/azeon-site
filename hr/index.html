@@ -240,6 +240,8 @@
   .fam-note { font-size: .78rem; color: var(--muted); }
 
   @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+  /* Hide the Netlify "Powered by Netlify" badge */
+  #nl-badge-frame, iframe[title="Powered by Netlify"] { display: none !important; }
 </style>
 
 <!-- ============ LOGIN ============ -->
