@@ -246,6 +246,69 @@
   .fam-name { font-weight: 600; font-size: .92rem; }
   .fam-note { font-size: .78rem; color: var(--muted); }
 
+  /* ---------- VIEW TABS ---------- */
+  .tabs { display: flex; justify-content: center; gap: 6px; padding-top: 20px; }
+  .tab { font-size: .88rem; font-weight: 600; padding: 9px 18px; border-radius: 11px; border: 1px solid var(--line-strong);
+    background: var(--surface); color: var(--muted); cursor: pointer; transition: .14s; }
+  .tab:hover { border-color: var(--purple); color: var(--purple-ink); }
+  .tab.on { background: var(--purple-soft); border-color: var(--purple); color: var(--purple-ink); }
+
+  /* ---------- CHECK AN APPLICANT ---------- */
+  .check-head { padding-block: clamp(26px, 5vw, 44px) 22px; text-align: center; }
+  .check-head .eyebrow { font-family: var(--mono); font-size: .68rem; text-transform: uppercase; letter-spacing: .18em;
+    color: var(--purple-ink); font-weight: 500; }
+  .check-head h1 { font-family: var(--serif); font-weight: 600; font-size: clamp(1.9rem, 4vw, 2.9rem);
+    letter-spacing: -.02em; margin: 12px 0 8px; }
+  .check-head p { color: var(--muted); font-size: 1.02rem; max-width: 52ch; margin: 0 auto; }
+  .check-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: 22px; align-items: start;
+    padding-bottom: 60px; }
+  @media (max-width: 900px) { .check-grid { grid-template-columns: minmax(0, 1fr); } }
+  .panel { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; box-shadow: var(--shadow-sm);
+    padding: 22px; }
+  .panel-t { font-family: var(--mono); font-size: .64rem; text-transform: uppercase; letter-spacing: .13em;
+    color: var(--purple-ink); font-weight: 500; margin: 0 0 12px; }
+  .examples { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; padding-bottom: 18px; border-bottom: 1px solid var(--line); }
+  .frow { display: grid; grid-template-columns: 1fr 1fr; gap: 0 14px; }
+  @media (max-width: 520px) { .frow { grid-template-columns: 1fr; } }
+  .field select { width: 100%; font-family: var(--sans); font-size: .95rem; color: var(--ink); background: var(--surface-2);
+    border: 1px solid var(--line-strong); border-radius: 11px; padding: 12px 13px; }
+  .field select:focus { outline: none; border-color: var(--purple); box-shadow: 0 0 0 3px var(--purple-soft); }
+  .field label .opt { font-weight: 400; color: var(--faint); }
+  .check-actions { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 6px; }
+  .check-note { font-size: .78rem; color: var(--faint); }
+  #checkResult { position: sticky; top: 84px; }
+  @media (max-width: 900px) { #checkResult { position: static; } }
+  .how { margin: 0; padding: 0; list-style: none; }
+  .how li { display: grid; grid-template-columns: 26px 1fr; gap: 12px; padding: 11px 0; border-top: 1px solid var(--line); }
+  .how li:first-child { border-top: none; padding-top: 0; }
+  .how .n { width: 26px; height: 26px; border-radius: 8px; background: var(--purple-soft); color: var(--purple-ink);
+    display: grid; place-items: center; font-family: var(--mono); font-size: .74rem; font-weight: 600; }
+  .how b { display: block; font-size: .92rem; }
+  .how span { font-size: .84rem; color: var(--muted); }
+  .verdict { border-radius: 14px; padding: 16px 18px; margin-bottom: 18px; border: 1px solid; }
+  .verdict .vh { font-family: var(--serif); font-weight: 600; font-size: 1.3rem; line-height: 1.15; }
+  .verdict .vd { font-size: .9rem; margin-top: 5px; color: var(--ink); }
+  .verdict.critical { background: var(--crit-soft); border-color: var(--crit); }
+  .verdict.critical .vh { color: var(--crit); }
+  .verdict.review { background: var(--warn-soft); border-color: var(--warn); }
+  .verdict.review .vh { color: var(--warn); }
+  .verdict.clear { background: var(--ok-soft); border-color: var(--ok); }
+  .verdict.clear .vh { color: var(--ok); }
+  .res-who { font-weight: 700; font-size: 1.05rem; }
+  .res-sub { color: var(--muted); font-size: .86rem; margin-bottom: 16px; }
+  .finding { border: 1px solid var(--line); border-radius: 13px; padding: 14px 15px; margin-top: 12px; }
+  .finding-top { display: flex; align-items: center; gap: 9px; flex-wrap: wrap; font-weight: 700; font-size: .95rem; }
+  .finding-why { font-size: .88rem; color: var(--ink); margin: 8px 0 12px; }
+  .finding-rec { display: flex; align-items: center; gap: 11px; background: var(--surface-2); border: 1px solid var(--line);
+    border-radius: 11px; padding: 10px 11px; }
+  .finding-rec .ava-sm { flex: none; }
+  .finding-rec .fr-main { min-width: 0; flex: 1; }
+  .finding-rec .fr-name { font-weight: 600; font-size: .9rem; }
+  .finding-rec .fr-meta { font-size: .78rem; color: var(--muted); }
+  .finding-rec .btn { padding: 7px 12px; font-size: .78rem; flex: none; }
+  .tag-flag.info { color: var(--purple-ink); background: var(--purple-soft); }
+  .res-foot { font-size: .78rem; color: var(--faint); margin-top: 16px; }
+
   @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
   /* Hide the Netlify "Powered by Netlify" badge */
   #nl-badge-frame, iframe[title="Powered by Netlify"] { display: none !important; }
@@ -334,6 +397,13 @@
   </header>
 
   <div class="wrap">
+    <div class="tabs" id="tabs">
+      <button class="tab on" data-view="viewSearch">Find an employee</button>
+      <button class="tab" data-view="viewCheck">Check a new applicant</button>
+    </div>
+  </div>
+
+  <div class="wrap" id="viewSearch">
     <div class="searchhero">
       <p class="eyebrow">Global search</p>
       <h1>Find anyone across BFG</h1>
@@ -353,6 +423,62 @@
     </div>
     <div class="count" id="count"></div>
     <div class="grid" id="grid"></div>
+  </div>
+
+  <div class="wrap" id="viewCheck" hidden>
+    <div class="check-head">
+      <p class="eyebrow">Hiring check</p>
+      <h1>Check a new applicant</h1>
+      <p>Enter the applicant before hiring. The system compares them with every record across all three brands and tells you if anything needs a second look.</p>
+    </div>
+
+    <div class="check-grid">
+      <form class="panel" id="checkForm">
+        <p class="panel-t">Try an example</p>
+        <div class="examples" id="examples">
+          <button type="button" class="chip" data-ex="0">Undeclared relative</button>
+          <button type="button" class="chip" data-ex="1">Declared relative</button>
+          <button type="button" class="chip" data-ex="2">Returning employee</button>
+          <button type="button" class="chip" data-ex="3">Clean applicant</button>
+        </div>
+
+        <p class="panel-t">Applicant</p>
+        <div class="frow">
+          <div class="field"><label for="caFirst">First name</label><input id="caFirst" required autocomplete="off"></div>
+          <div class="field"><label for="caLast">Last name</label><input id="caLast" required autocomplete="off"></div>
+        </div>
+        <div class="frow">
+          <div class="field"><label for="caDob">Birth date <span class="opt">(optional)</span></label><input id="caDob" type="date"></div>
+          <div class="field"><label for="caSss">SSS number <span class="opt">(optional)</span></label><input id="caSss" autocomplete="off" placeholder="00-0000000-0"></div>
+        </div>
+        <div class="field"><label for="caAddr">Present address</label><input id="caAddr" autocomplete="off" placeholder="House no., street, city"></div>
+        <div class="frow">
+          <div class="field"><label for="caMobile">Mobile</label><input id="caMobile" autocomplete="off" inputmode="tel"></div>
+          <div class="field"><label for="caPos">Position applied for</label><input id="caPos" autocomplete="off"></div>
+        </div>
+        <div class="frow">
+          <div class="field"><label for="caEmName">Emergency contact</label><input id="caEmName" autocomplete="off" placeholder="Full name"></div>
+          <div class="field"><label for="caEmPhone">Emergency contact number</label><input id="caEmPhone" autocomplete="off" inputmode="tel"></div>
+        </div>
+        <div class="frow">
+          <div class="field"><label for="caBrand">Applying to</label>
+            <select id="caBrand">
+              <option>Rice in a Box</option>
+              <option>Kyukyu Ramen 99</option>
+              <option>Wangfu</option>
+            </select>
+          </div>
+          <div class="field"><label for="caRel">Relatives in BFG <span class="opt">(optional)</span></label><input id="caRel" autocomplete="off" placeholder="Full names, separated by commas"></div>
+        </div>
+        <div class="check-actions">
+          <button class="btn btn-primary" type="submit">Run check</button>
+          <button class="btn btn-ghost" type="button" id="checkClear">Clear</button>
+          <span class="check-note">Demo only. Nothing you type is saved or sent anywhere.</span>
+        </div>
+      </form>
+
+      <div class="panel" id="checkResult" aria-live="polite"></div>
+    </div>
   </div>
 </div>
 
@@ -523,6 +649,174 @@
     const c = e.target.closest('.idcard'); if(!c) return;
     openModal(EMP.find(x=>x.id===Number(c.dataset.id)));
   });
+
+  // ---------- view tabs ----------
+  document.getElementById('tabs').addEventListener('click', e=>{
+    const t = e.target.closest('.tab'); if(!t) return;
+    document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('on', x===t));
+    ['viewSearch','viewCheck'].forEach(id=>{ document.getElementById(id).hidden = id!==t.dataset.view; });
+    window.scrollTo(0, 0);
+  });
+
+  // ---------- check a new applicant ----------
+  const esc = s => String(s==null?'':s).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const norm = s => (s||'').toLowerCase().normalize('NFKD').replace(/[^a-z0-9 ]/g,' ').replace(/\s+/g,' ').trim();
+  const normPhone = s => { let d=(s||'').replace(/\D/g,''); if(d.startsWith('63') && d.length>=12) d='0'+d.slice(2); return d; };
+  const normId = s => (s||'').replace(/[^0-9a-z]/gi,'').toLowerCase();
+  const normAddr = s => norm(s).replace(/\bstreet\b/g,'st').replace(/\bavenue\b/g,'ave').replace(/\broad\b/g,'rd')
+    .replace(/\bdrive\b/g,'dr').replace(/ /g,'');
+  const sameDay = (iso, text) => {
+    if(!iso || !text) return false;
+    const d = new Date(text); if(isNaN(d)) return false;
+    const [y,m,dd] = iso.split('-').map(Number);
+    return d.getFullYear()===y && d.getMonth()+1===m && d.getDate()===dd;
+  };
+  const standing = e => e.rehire===false ? 'blocked' : (e.status==='terminated' ? 'terminated' : 'clean');
+  const whereOf = e => e.brand + (e.branch.startsWith('—') ? '' : ' — ' + e.branch);
+  const SEV_RANK = { critical:3, review:2, info:1 };
+  const SEV_LABEL = { critical:'Critical', review:'Review', info:'Note' };
+
+  // Compare one applicant with every record on file. It only raises flags; a person decides.
+  function runCheck(a){
+    const findings = [];
+    const full = norm(a.first+' '+a.last), last = norm(a.last);
+    const sss = normId(a.sss), mob = normPhone(a.mobile), em = normPhone(a.emPhone);
+    const emName = norm(a.emName), addr = normAddr(a.addr);
+    const declared = (a.relatives||'').split(/[,;\n]/).map(norm).filter(Boolean);
+
+    for(const e of EMP){
+      const st = standing(e), eName = norm(e.name);
+
+      // 1. Is this the same person, already on file?
+      const sssHit = sss.length>=6 && normId(e.sss)===sss;
+      const nameHit = !!full && eName===full;
+      const dobHit = nameHit && sameDay(a.dob, e.dob);
+      if(sssHit || nameHit){
+        const basis = [];
+        if(sssHit) basis.push('same SSS number');
+        if(dobHit) basis.push('same name and birth date'); else if(nameHit) basis.push('same full name');
+        const strong = sssHit || dobHit;
+        let sev, title;
+        if(st==='blocked'){ sev = strong?'critical':'review'; title = strong ? 'Same person, not eligible for rehire' : 'Same name as someone not eligible for rehire'; }
+        else if(st==='terminated'){ sev = 'review'; title = strong ? 'Same person, previously terminated' : 'Same name as a terminated employee'; }
+        else if(e.status==='applicant'){ sev = 'info'; title = 'Already has an application on file'; }
+        else { sev = 'info'; title = strong ? 'Already on file as an employee' : 'Same name as an employee on file'; }
+        findings.push({ sev, title, why:'Matched on: '+basis.join(', ')+'.', emp:e });
+        continue;
+      }
+      if(e.status==='applicant') continue;
+
+      // 2. A relative the applicant declared
+      if(declared.includes(eName)){
+        const sev = st==='blocked' ? 'critical' : (st==='terminated' ? 'review' : 'info');
+        const title = st==='blocked' ? 'Declared relative is not eligible for rehire'
+          : (st==='terminated' ? 'Declared relative was terminated' : 'Declared relative works in the group');
+        findings.push({ sev, title, why:'The applicant listed '+e.name+' as a relative.', emp:e });
+        continue;
+      }
+
+      // 3. Signs of a relative the applicant did not declare
+      const reasons = [];
+      const sameSurname = !!last && (eName===last || eName.endsWith(' '+last));
+      const sameAddr = !!addr && normAddr(e.addr)===addr;
+      if(sameSurname && sameAddr) reasons.push('same surname and present address');
+      else if(sameAddr) reasons.push('same present address');
+      if(em.length>=7 && em===normPhone(e.mobile)) reasons.push('emergency contact number is this person’s mobile');
+      if(mob.length>=7 && mob===normPhone(e.mobile)) reasons.push('same mobile number');
+      const fam = e.family.find(f => (emName && norm(f.name)===emName) || (em.length>=7 && normPhone(f.note)===em));
+      if(fam) reasons.push('emergency contact is this person’s '+fam.rel.toLowerCase()+' ('+fam.name+')');
+      if(reasons.length){
+        const adverse = st!=='clean';
+        findings.push({
+          sev: adverse ? 'review' : 'info',
+          title: adverse ? 'Possible relative of a terminated employee' : 'Possible relative of a current employee',
+          why: reasons.join('; ').replace(/^./, c=>c.toUpperCase())+'.', emp:e });
+      }
+    }
+    return findings.sort((x,y)=>SEV_RANK[y.sev]-SEV_RANK[x.sev]);
+  }
+
+  const HOW_HTML = `<p class="panel-t">What the check looks for</p>
+    <ol class="how">
+      <li><span class="n">1</span><div><b>The same person</b><span>Matching SSS number, or the same name and birth date, as someone already on file.</span></div></li>
+      <li><span class="n">2</span><div><b>Declared relatives</b><span>Family the applicant lists who work in, or were terminated by, any brand.</span></div></li>
+      <li><span class="n">3</span><div><b>Undeclared links</b><span>The same surname and address, or an emergency contact shared with someone on file.</span></div></li>
+    </ol>
+    <p class="res-foot">Fill in the form, or tap an example on the left, then run the check.</p>`;
+
+  function showResult(a, findings){
+    const top = findings.length ? findings[0].sev : null;
+    let vClass, vh, vd;
+    if(top==='critical'){ vClass='critical'; vh='Do not proceed yet'; vd='A critical match was found. Hiring this applicant needs a Super Admin’s approval and a written reason.'; }
+    else if(top==='review'){ vClass='review'; vh='Review before hiring'; vd='There is a possible link to a terminated employee. Check the details below before deciding.'; }
+    else if(top==='info'){ vClass='clear'; vh='Cleared, with notes'; vd='Nothing blocks this hire. The notes below are for your awareness.'; }
+    else { vClass='clear'; vh='Cleared'; vd='No matches found. This applicant has no link to anyone on file.'; }
+
+    const rows = findings.map((f,i)=>`<div class="finding">
+        <div class="finding-top"><span class="tag-flag ${f.sev}">${SEV_LABEL[f.sev]}</span>${esc(f.title)}</div>
+        <div class="finding-why">${esc(f.why)}</div>
+        <div class="finding-rec">
+          <div class="ava-sm">${esc(initials(f.emp.name))}</div>
+          <div class="fr-main">
+            <div class="fr-name">${esc(f.emp.name)}</div>
+            <div class="fr-meta">${esc(f.emp.role)} · ${esc(whereOf(f.emp))} · ${f.emp.rehire===false ? 'Not eligible for rehire' : STATUS_LABEL[f.emp.status]}</div>
+          </div>
+          <button type="button" class="btn btn-ghost" data-rec="${f.emp.id}">View record</button>
+        </div>
+      </div>`).join('');
+
+    document.getElementById('checkResult').innerHTML = `
+      <p class="panel-t">Result</p>
+      <div class="res-who">${esc(a.first)} ${esc(a.last)}</div>
+      <div class="res-sub">Applying to ${esc(a.brand)}${a.position ? ' · '+esc(a.position) : ''}</div>
+      <div class="verdict ${vClass}"><div class="vh">${vh}</div><div class="vd">${vd}</div></div>
+      ${rows}
+      <p class="res-foot">Checked against ${EMP.length} records across 3 brands. The system only flags; a person makes the decision.</p>`;
+  }
+
+  const CA = ['First','Last','Dob','Sss','Addr','Mobile','Pos','EmName','EmPhone','Brand','Rel'];
+  const caGet = () => ({
+    first: caFirst.value.trim(), last: caLast.value.trim(), dob: caDob.value, sss: caSss.value, addr: caAddr.value,
+    mobile: caMobile.value, position: caPos.value.trim(), emName: caEmName.value, emPhone: caEmPhone.value,
+    brand: caBrand.value, relatives: caRel.value });
+  const [caFirst, caLast, caDob, caSss, caAddr, caMobile, caPos, caEmName, caEmPhone, caBrand, caRel] =
+    CA.map(k => document.getElementById('ca'+k));
+
+  const EXAMPLES = [
+    { First:'Paolo', Last:'Rivera', Dob:'2001-02-10', Sss:'', Addr:'123 Mabini St., Cebu City', Mobile:'0917 555 0188', Pos:'Kitchen Crew',
+      EmName:'Rosa Rivera', EmPhone:'0917 555 9090', Brand:'Kyukyu Ramen 99', Rel:'' },
+    { First:'Mark', Last:'Tan', Dob:'1996-06-21', Sss:'', Addr:'18 Hernan Cortes St, Mandaue City', Mobile:'0922 400 1122', Pos:'Service Crew',
+      EmName:'Liza Tan', EmPhone:'0922 400 1100', Brand:'Rice in a Box', Rel:'Danilo Tan' },
+    { First:'Elena', Last:'Rivera', Dob:'1994-07-12', Sss:'34-1122334-5', Addr:'123 Mabini Street, Cebu City', Mobile:'0917 555 0101', Pos:'Cashier',
+      EmName:'Rosa Rivera', EmPhone:'0917 555 9090', Brand:'Rice in a Box', Rel:'' },
+    { First:'Bea', Last:'Castillo', Dob:'2000-09-05', Sss:'', Addr:'44 Tres de Abril St, Cebu City', Mobile:'0915 300 7788', Pos:'Cashier',
+      EmName:'Nora Castillo', EmPhone:'0915 300 7700', Brand:'Wangfu', Rel:'' },
+  ];
+
+  function submitCheck(){
+    const a = caGet();
+    showResult(a, runCheck(a));
+    const box = document.getElementById('checkResult');
+    if(box.getBoundingClientRect().top > window.innerHeight * .6) box.scrollIntoView({ behavior:'smooth', block:'start' });
+  }
+  document.getElementById('checkForm').addEventListener('submit', ev=>{ ev.preventDefault(); submitCheck(); });
+  document.getElementById('examples').addEventListener('click', e=>{
+    const b = e.target.closest('.chip'); if(!b) return;
+    const ex = EXAMPLES[Number(b.dataset.ex)];
+    CA.forEach(k => { document.getElementById('ca'+k).value = ex[k]; });
+    document.querySelectorAll('#examples .chip').forEach(c=>c.classList.toggle('on', c===b));
+    submitCheck();
+  });
+  document.getElementById('checkClear').addEventListener('click', ()=>{
+    document.getElementById('checkForm').reset();
+    document.querySelectorAll('#examples .chip').forEach(c=>c.classList.remove('on'));
+    document.getElementById('checkResult').innerHTML = HOW_HTML;
+  });
+  document.getElementById('checkResult').addEventListener('click', e=>{
+    const b = e.target.closest('[data-rec]'); if(!b) return;
+    openModal(EMP.find(x=>x.id===Number(b.dataset.rec)));
+  });
+  document.getElementById('checkResult').innerHTML = HOW_HTML;
 
   render();
 </script>
