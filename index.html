@@ -421,6 +421,24 @@ h1.hero-name{
 .cta .btn{border-color:var(--bg);color:var(--bg)}
 .cta .btn::before{background:var(--bg)}
 .cta .btn:hover{color:var(--ink)}
+.bf{display:grid;grid-template-columns:1fr 1fr;gap:14px;text-align:left;max-width:600px;margin:0 auto}
+.bf-field{display:flex;flex-direction:column;gap:8px}
+.bf-field.full{grid-column:1/-1}
+.bf-field label{font-size:0.6rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.45)}
+.bf-field input,.bf-field textarea{
+  font:inherit;font-size:0.92rem;color:var(--bg);background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.18);border-radius:0;padding:14px 16px;width:100%;
+  transition:border-color .3s var(--ease),background .3s var(--ease);
+}
+.bf-field textarea{min-height:140px;resize:vertical;line-height:1.7}
+.bf-field input::placeholder,.bf-field textarea::placeholder{color:rgba(255,255,255,0.3)}
+.bf-field input:focus,.bf-field textarea:focus{outline:none;border-color:var(--bg);background:rgba(255,255,255,0.07)}
+.bf-hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.bf-actions{grid-column:1/-1;display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-top:6px}
+.bf button.btn{background:none;font-family:inherit;cursor:pointer}
+.bf button.btn:disabled{opacity:.5;cursor:wait}
+.bf-status{font-size:0.86rem;color:rgba(255,255,255,0.7)}
+.bf-status.err{color:#ff9b9b}
 .contact-links{display:flex;justify-content:center;gap:1px;flex-wrap:wrap;margin-top:60px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.12)}
 .cl-item{
   flex:1;min-width:190px;background:var(--ink);padding:28px 22px;display:flex;flex-direction:column;align-items:center;gap:8px;
@@ -507,6 +525,7 @@ h1.hero-name{
   .proc-step::after{display:none!important}
   .cta{padding:84px 22px}
   .contact-links{flex-direction:column}
+  .bf{grid-template-columns:1fr}
   .footer{padding:44px 22px 34px}
   .footer-name{font-size:2.6rem}
   .footer-top{align-items:flex-start}
@@ -953,9 +972,28 @@ h1.hero-name{
     <p class="cta-ey rv">Let's Build Something</p>
     <h2 class="cta-title rv" style="--d:.06s">TELL US WHAT<br>YOU NEED BUILT</h2>
     <p class="cta-sub rv" style="--d:.12s">Send a short brief — the problem, the timeline, the budget range if you have one. You will get a straight answer on whether we are the right fit, and we aim to reply within one business day.</p>
-    <div class="rv" style="--d:.18s">
-      <a href="mailto:maribel@azeon.co" class="btn"><span>Send a Brief</span><span class="arw">→</span></a>
-    </div>
+    <!-- Netlify Forms: submissions appear in Netlify under Forms → "brief".
+         Form detection must be switched on once in the Netlify dashboard. -->
+    <form class="bf rv" style="--d:.18s" name="brief" method="POST" action="/?sent=1" data-netlify="true" netlify-honeypot="company-site" id="briefForm">
+      <input type="hidden" name="form-name" value="brief">
+      <p class="bf-hp"><label>Leave this empty <input name="company-site" tabindex="-1" autocomplete="off"></label></p>
+      <div class="bf-field">
+        <label for="cf-name">Name</label>
+        <input id="cf-name" name="name" type="text" autocomplete="name" required placeholder="Juan Dela Cruz">
+      </div>
+      <div class="bf-field">
+        <label for="cf-email">Email</label>
+        <input id="cf-email" name="email" type="email" autocomplete="email" required placeholder="you@company.com">
+      </div>
+      <div class="bf-field full">
+        <label for="cf-msg">What do you need built?</label>
+        <textarea id="cf-msg" name="message" required placeholder="The problem, the timeline, and a budget range if you have one."></textarea>
+      </div>
+      <div class="bf-actions">
+        <button type="submit" class="btn"><span>Send a Brief</span><span class="arw">→</span></button>
+        <span class="bf-status" id="cfStatus" role="status" aria-live="polite"></span>
+      </div>
+    </form>
 
     <div class="contact-links rv" style="--d:.24s">
       <a href="mailto:maribel@azeon.co" class="cl-item">
@@ -1207,6 +1245,35 @@ function lbClose(){
 document.addEventListener('keydown', function(e){
   if(e.key === 'Escape'){ lbClose(); document.body.classList.remove('menu-open'); }
 });
+
+/* ── Brief form: send without leaving the page ── */
+(function(){
+  var form = document.getElementById('briefForm');
+  var status = document.getElementById('cfStatus');
+  if(!form) return;
+  if(location.search.indexOf('sent=1') !== -1){
+    status.textContent = 'Thanks — your brief was sent. We will get back to you soon.';
+  }
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var btn = form.querySelector('button[type=submit]');
+    btn.disabled = true;
+    status.className = 'bf-status';
+    status.textContent = 'Sending…';
+    fetch('/', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+      body: new URLSearchParams(new FormData(form)).toString()
+    }).then(function(res){
+      if(!res.ok) throw new Error(res.status);
+      form.reset();
+      status.textContent = 'Thanks — your brief was sent. We will get back to you soon.';
+    }).catch(function(){
+      status.className = 'bf-status err';
+      status.innerHTML = 'Something went wrong. Please email us at <a href="mailto:maribel@azeon.co" style="text-decoration:underline">maribel@azeon.co</a>.';
+    }).then(function(){ btn.disabled = false; });
+  });
+})();
 </script>
 </body>
 </html>
